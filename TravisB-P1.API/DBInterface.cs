@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.Data;
+using TravisB_P1;
 
-namespace TravisB_P0
+namespace TravisB_P1.API
 {
     public class DBInterface
     {
@@ -43,7 +39,7 @@ namespace TravisB_P0
             string commandText = "SELECT Inventory.ItemID, Inventory.Quantity FROM Inventory WHERE StoreID = @location;";
 
             connection.Open();
-            SqlDataAdapter inventGrabber = new SqlDataAdapter(commandText, connection);
+            SqlDataAdapter inventGrabber = new(commandText, connection);
             inventGrabber.SelectCommand.Parameters.AddWithValue("@location", location);
             DataTable inventory = new();
             inventGrabber.Fill(inventory);

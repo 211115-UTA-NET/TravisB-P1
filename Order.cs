@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.IO.Enumeration;
-using System.Data.SqlClient;
+using TravisB_P1.API;
 
-namespace TravisB_P0
+namespace TravisB_P1
 {
     public class Order : IOrder
     {
@@ -29,7 +25,6 @@ namespace TravisB_P0
             Console.WriteLine("\nPlease specify what you would like to order, or enter done if done ordering");
             string selection = Console.ReadLine()!;
 
-            Console.WriteLine($"__{selection}__");
 
             if (selection == "done")
             {
@@ -70,15 +65,6 @@ namespace TravisB_P0
         public void AddToHistory(Order order)
         {
             throw new NotImplementedException();
-        }
-
-        public float Total(List<Product> cart)
-        {
-            foreach (Product item in ShoppingCart!)
-            {
-                throw new NotImplementedException();
-            }
-            return 0;
         }
     }
 }
