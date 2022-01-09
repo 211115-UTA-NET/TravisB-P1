@@ -8,7 +8,7 @@ namespace TravisB_P1.App
 {
     public class Order : IOrder
     {
-        private List<Product>? ShoppingCart;
+        public List<Product>? ShoppingCart;
         public Locations location;
 
 
@@ -39,6 +39,10 @@ namespace TravisB_P1.App
                 bool isNumber = int.TryParse(number, out int quantity);
                 if (isNumber)
                 {
+                    if (quantity > totalAvailable)
+                    {
+                        Console.WriteLine("I'm sorry, we do not have enough available to complete your order.");
+                    }
                     if (quantity > 20)
                     {
                         Console.WriteLine("I'm sorry, we don't support orders of more than 20 items of any kind due to demand");

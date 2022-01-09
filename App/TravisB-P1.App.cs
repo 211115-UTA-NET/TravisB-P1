@@ -29,7 +29,7 @@ namespace TravisB_P1.App
             }
 
 
-            Uri server = new("https://localhost:7175");
+            Uri server = new("https://localhost:7281");
 
 
             switch (entry)
@@ -63,37 +63,41 @@ namespace TravisB_P1.App
                     IOrderService orderService1 = new OrderService(server);
                     List<Inventory> inventory = await orderService1.GetInventoryAsync(locationChoice);
 
-
-                    bool done = false;
-                    List<Product> cart = new();
-
-                    Order thisOrder = new(cart, locationChoice);
-                    while (done != true)
+                    foreach(Inventory inventoryItem in inventory)
                     {
-                        done = thisOrder.AddToCart();
+                        Console.WriteLine(inventoryItem);
                     }
 
-                    //getting Customer name
-                    string name = "";
-                    bool gotName = false;
-                    do
-                    {
-                        if (name == "" || name == null)
-                        {
-                            Console.WriteLine("Please enter your name for our records");
-                            name = Console.ReadLine()!;
-                        }
-                        else
-                        {
-                            gotName = true;
-                        }
-                    } while (gotName != true);
 
-                    IOrderService orderService = new OrderService(server);
+                    //bool done = false;
+                    //List<Product> cart = new();
 
-                    Customer thisCustomer = new();
-                    thisCustomer._Name = name;
-                    thisOrder.FinalizeOrderAsync(thisOrder, thisCustomer);
+                    //Order thisOrder = new(cart, locationChoice);
+                    //while (done != true)
+                    //{
+                    //    done = thisOrder.AddToCart();
+                    //}
+
+                    ////getting Customer name
+                    //string name = "";
+                    //bool gotName = false;
+                    //do
+                    //{
+                    //    if (name == "" || name == null)
+                    //    {
+                    //        Console.WriteLine("Please enter your name for our records");
+                    //        name = Console.ReadLine()!;
+                    //    }
+                    //    else
+                    //    {
+                    //        gotName = true;
+                    //    }
+                    //} while (gotName != true);
+
+                    //IOrderService orderService = new OrderService(server);
+
+                    //Customer thisCustomer = new();
+                    //thisCustomer._Name = name;
                     break;
 
                 case "view history":

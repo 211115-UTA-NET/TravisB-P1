@@ -48,8 +48,9 @@ namespace TravisB_P1.App
         }
         public async void FinalizeOrderAsync(Order order, Customer customer)
         {
-            await response = "";
-            return;
+            //await response = "";
+            //return;
+            throw new NotImplementedException();
         }
     }
 }

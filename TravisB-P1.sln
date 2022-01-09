@@ -7,10 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravisB-P1", "TravisB-P1.cs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravisB-P1.API", "TravisB-P1.API\TravisB-P1.API.csproj", "{1CAF3B54-8F86-4731-980A-C2B2E9B540B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravisB-P1.DataStorage", "..\ConsoleApp1\TravisB-P1.DataStorage.csproj", "{82057672-278F-4B77-82E4-DBABF97D3CF7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravisB-P1.Logic", "..\ConsoleApp2\TravisB-P1.Logic.csproj", "{8CDF1565-A004-419A-925E-707F172C6C5E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,14 +21,6 @@ Global
 		{1CAF3B54-8F86-4731-980A-C2B2E9B540B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CAF3B54-8F86-4731-980A-C2B2E9B540B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CAF3B54-8F86-4731-980A-C2B2E9B540B3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82057672-278F-4B77-82E4-DBABF97D3CF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82057672-278F-4B77-82E4-DBABF97D3CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82057672-278F-4B77-82E4-DBABF97D3CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82057672-278F-4B77-82E4-DBABF97D3CF7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8CDF1565-A004-419A-925E-707F172C6C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8CDF1565-A004-419A-925E-707F172C6C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8CDF1565-A004-419A-925E-707F172C6C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8CDF1565-A004-419A-925E-707F172C6C5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,5 @@
-﻿using TravisB_P1.API;
-using TravisB_P1.API.Dtos;
+﻿using TravisB_P1.API1;
+using TravisB_P1.API1.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using System.ComponentModel.DataAnnotations;
@@ -21,9 +21,9 @@ namespace TravisB_P1.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<InventoryDtos>>> GetStoreInventory([FromQuery, Required] Locations location)
+        public async Task<ActionResult<IEnumerable<Inventory>>> GetStoreInventory([FromQuery, Required] Locations location)
         {
-            IEnumerable<InventoryDtos> inventory;
+            IEnumerable<Inventory> inventory;
             try
             {
                 inventory = await _repository.GetStoreInventory(location);
@@ -37,3 +37,4 @@ namespace TravisB_P1.API.Controllers
         }
     }
 }
+
