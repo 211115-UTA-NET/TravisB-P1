@@ -1,11 +1,13 @@
-﻿using TravisB_P1.API;
+﻿using System.Net.Http.Json;
+using System.Text.Json;
+using TravisB_P1.App.Dtos;
 
-namespace TravisB_P1
+namespace TravisB_P1.App
 {
 
-    public class Program
+    public class TravisBP1
     {
-        static void Main()
+        public async static Task Main()
         {
             bool madeChoice = false;
             string entry = "";
@@ -13,6 +15,7 @@ namespace TravisB_P1
             {
                 Console.WriteLine("Hello, what would you like to do today?");
                 Console.WriteLine("1) Order \t 2) View History \t 3) Exit");
+                Console.WriteLine("______________________________________________");
                 entry = Console.ReadLine()!;
                 entry = entry!.ToLower();
                 if (entry == "order" || entry == "view history" || entry == "exit")
@@ -24,6 +27,11 @@ namespace TravisB_P1
                     Console.WriteLine("Please enter a valid option");
                 }
             }
+
+
+            Uri server = new("https://localhost:7175");
+
+
             switch (entry)
             {
                 case "order":
@@ -51,7 +59,10 @@ namespace TravisB_P1
                         }
                     }
 
-                    DBInterface.GettingMenu();
+                    // getting menu (with total available) goes here
+                    IOrderService orderService1 = new OrderService(server);
+                    List<Inventory> inventory = await orderService1.GetInventoryAsync(locationChoice);
+
 
                     bool done = false;
                     List<Product> cart = new();
@@ -61,7 +72,6 @@ namespace TravisB_P1
                     {
                         done = thisOrder.AddToCart();
                     }
-                    break;
 
                     //getting Customer name
                     string name = "";
@@ -79,9 +89,12 @@ namespace TravisB_P1
                         }
                     } while (gotName != true);
 
+                    IOrderService orderService = new OrderService(server);
 
-                    Customer thisCustomer = new(name!);
-                    thisOrder.FinalizeOrder(thisOrder, thisCustomer);
+                    Customer thisCustomer = new();
+                    thisCustomer._Name = name;
+                    thisOrder.FinalizeOrderAsync(thisOrder, thisCustomer);
+                    break;
 
                 case "view history":
                     break;

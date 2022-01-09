@@ -1,11 +1,16 @@
-using TravisB_P1.API;
+using Microsoft.AspNetCore.WebUtilities;
+using System.Net.Http.Json;
+using System.Net.Mime;
+using System.Text.Json;
+using TravisB_P1.App.Dtos;
 
-namespace TravisB_P1
+namespace TravisB_P1.App
 {
     public class Order : IOrder
     {
         private List<Product>? ShoppingCart;
-        Locations location;
+        public Locations location;
+
 
         //constructors
         public Order(List<Product> cart, Locations location)
@@ -14,11 +19,6 @@ namespace TravisB_P1
             this.location = location;
         }
 
-        public static void CheckingInventory(Locations location)
-        {
-            int totalAvailable = (int)DBInterface.GettingInventory(location).Rows[0]["Quantity"];
-            Console.WriteLine(totalAvailable);
-        }
 
         public bool AddToCart()
         {
@@ -32,7 +32,7 @@ namespace TravisB_P1
             }
             else if (selection == "Cheese" || selection == "Pepperoni" || selection == "Hawaiian" || selection == "Alfredo" || selection == "Deluxe")
             {
-                Products productSelection = (Products)Enum.Parse(typeof(Products), selection);
+                Items productSelection = (Items)Enum.Parse(typeof(Items), selection);
 
                 Console.WriteLine("How many would you like to order?\n");
                 string number = Console.ReadLine()!;
@@ -57,14 +57,10 @@ namespace TravisB_P1
             }
             return false;
         }
-        public void FinalizeOrder(Order order, Customer customer)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void AddToHistory(Order order)
+        public float Total(List<Product> cart)
         {
-            throw new NotImplementedException();
+                throw new NotImplementedException();
         }
     }
 }

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
+using TravisB_P1.App;
+using TravisB_P1.Console.Dtos;
 
-namespace TravisB_P1
+namespace TravisB_P1.App
 {
     public interface IOrder
     {
         bool AddToCart();
-        void FinalizeOrder(Order order, Customer customer);
-        void AddToHistory(Order order);
+        float Total(List<Product> cart);
     }
 }

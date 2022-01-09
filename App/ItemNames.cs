@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TravisB_P1
+namespace TravisB_P1.App
 {
-    public enum Products
+    public enum Items
     {
         Cheese = 1,
         Pepperoni = 2,
