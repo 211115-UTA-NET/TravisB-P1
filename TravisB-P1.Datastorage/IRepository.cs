@@ -1,6 +1,6 @@
-﻿using TravisB_P1API.Logic;
+﻿using TravisB_P1.Logic;
 
-namespace TravisB_P1API.DataStorage
+namespace TravisB_P1.DataStorage
 {
     public interface IRepository
     {

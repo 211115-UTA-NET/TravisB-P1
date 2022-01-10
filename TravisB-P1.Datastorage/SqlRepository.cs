@@ -1,8 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
-using System.Data.SqlClient;
-using TravisB_P1API.Logic;
+﻿using System.Data.SqlClient;
+using TravisB_P1.Logic;
 
-namespace TravisB_P1API.DataStorage
+namespace TravisB_P1.DataStorage
 {
     public class SqlRepository : IRepository
     {
@@ -65,7 +64,8 @@ namespace TravisB_P1API.DataStorage
 
             foreach (Product item in order.shoppingCart)
             {
-                cmd.Parameters.AddWithValue("@ItemID", order.shoppingCart);
+                cmd.Parameters.AddWithValue("@ItemID", item.productName);
+                cmd.Parameters.AddWithValue("@QuantityOrdered", item.quantity);
             }
         }
     }

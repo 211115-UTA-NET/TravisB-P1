@@ -1,4 +1,4 @@
-﻿namespace TravisB_P1API.Logic
+﻿namespace TravisB_P1.Logic
 {
     public class Inventory
     {
