@@ -8,14 +8,14 @@ namespace TravisB_P1.App
 {
     public class Order : IOrder
     {
-        public List<Product>? ShoppingCart;
-        public Locations location;
+        public List<Product>? shoppingCart { get; set; }
+        public Locations location { get; set; }
 
 
         //constructors
         public Order(List<Product> cart, Locations location)
         {
-            this.ShoppingCart = cart;
+            this.shoppingCart = cart;
             this.location = location;
         }
 
@@ -48,7 +48,7 @@ namespace TravisB_P1.App
                         Console.WriteLine("I'm sorry, we don't support orders of more than 20 items of any kind due to demand");
                     }
                     Product thisProduct = new(productSelection, quantity);
-                    ShoppingCart!.Add(thisProduct);
+                    shoppingCart!.Add(thisProduct);
                 }
                 else
                 {

@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TravisB_P1.API.Dtos
+namespace TravisB_P1API.API.Dtos
 {
     public class CustomerDtos
     {
         [Required]
-        public string _Name { get; set; }
+        public string name { get; set; }
     }
 }
-

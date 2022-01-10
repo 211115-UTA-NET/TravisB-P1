@@ -1,7 +1,8 @@
-﻿using System.Data.SqlClient;
-using TravisB_P1.API.Dtos;
+﻿using Microsoft.Extensions.Logging;
+using System.Data.SqlClient;
+using TravisB_P1API.Logic;
 
-namespace TravisB_P1.API
+namespace TravisB_P1API.DataStorage
 {
     public class SqlRepository : IRepository
     {
@@ -14,9 +15,9 @@ namespace TravisB_P1.API
             _logger = logger;
         }
 
-        public async Task<IEnumerable<InventoryDtos>> GetStoreInventoryAsync(Locations storeChoice)
+        public async Task<IEnumerable<Inventory>> GetStoreInventoryAsync(Locations storeChoice)
         {
-            List<InventoryDtos> inventory = new List<InventoryDtos>();
+            List<Inventory> inventory = new();
 
             using SqlConnection connection = new(_connectionString);
             await connection.OpenAsync();
@@ -49,7 +50,7 @@ namespace TravisB_P1.API
             return inventory;
         }
 
-        public void AddNewOrder(Order order, CustomerDtos customer)
+        public void AddNewOrder(Order order, Customer customer)
         {
             using SqlConnection connection = new(_connectionString);
             connection.OpenAsync();
@@ -59,9 +60,13 @@ namespace TravisB_P1.API
 
             using SqlCommand cmd = new(cmdText, connection);
 
-            cmd.Parameters.AddWithValue("@CustomerName", customer._Name);
+            cmd.Parameters.AddWithValue("@CustomerName", customer.name);
             cmd.Parameters.AddWithValue("@LocationID", order.location.ToString());
-            cmd.Parameters.AddWithValue("@ItemID", order.)
+
+            foreach (Product item in order.shoppingCart)
+            {
+                cmd.Parameters.AddWithValue("@ItemID", order.shoppingCart);
+            }
         }
     }
 }

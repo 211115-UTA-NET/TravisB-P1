@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace TravisB_P1.API1.Controllers
+namespace TravisB_P1API.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]

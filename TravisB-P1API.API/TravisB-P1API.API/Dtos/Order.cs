@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TravisB_P1.API.Dtos
+namespace TravisB_P1API.API.Dtos
 {
-    public class OrderDtos
+    public class Order
     {
         [Required]
         public List<Product>? ShoppingCart { get; set; }

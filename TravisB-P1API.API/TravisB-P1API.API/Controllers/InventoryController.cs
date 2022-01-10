@@ -1,15 +1,15 @@
-﻿using TravisB_P1.API;
-using TravisB_P1.API.Dtos;
+﻿using TravisB_P1API.API;
+using TravisB_P1API.API.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 
-namespace TravisB_P1.API.Controllers
+namespace TravisB_P1API.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InventoryController : Controller
+    public class InventoryController : ControllerBase
     {
         private readonly IRepository _repository;
         private readonly ILogger<InventoryController> _logger;
@@ -21,12 +21,12 @@ namespace TravisB_P1.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<InventoryDtos>>> GetStoreInventory([FromQuery, Required] Locations location)
+        public async Task<ActionResult<IEnumerable<Inventory>>> GetStoreInventory([FromQuery, Required] Locations location)
         {
-            IEnumerable<InventoryDtos> inventory;
+            IEnumerable<Inventory> inventory;
             try
             {
-                inventory = await _repository.GetStoreInventory(location);
+                inventory = await _repository.GetStoreInventoryAsync(location);
             }
             catch (SqlException ex)
             {

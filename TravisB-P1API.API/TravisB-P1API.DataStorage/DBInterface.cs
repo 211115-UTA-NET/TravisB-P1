@@ -1,12 +1,16 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TravisB_P1API.Logic;
 
-namespace TravisB_P1.API
+namespace TravisB_P1API.DataStorage
 {
     public class DBInterface
     {
-
-
         public static void GettingMenu()
         {
             //Connection and database interface
