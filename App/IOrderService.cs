@@ -9,7 +9,7 @@ namespace TravisB_P1.App
 {
     public interface IOrderService
     {
-        Task<List<Inventory>> GetInventoryAsync(Locations location);
+        void GetInventoryAsync(Locations location);
         void FinalizeOrderAsync(Order order, Customer customer);
     }
 }

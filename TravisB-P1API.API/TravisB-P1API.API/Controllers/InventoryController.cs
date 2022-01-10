@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
+using TravisB_P1.DataStorage;
+using TravisB_P1.Logic;
 
 namespace TravisB_P1API.API.Controllers
 {

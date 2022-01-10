@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TravisB-P1.Datastorage\TravisB-P1.DataStorage.csproj" />
+    <ProjectReference Include="..\TravisB-P1.DataStorage\TravisB-P1.DataStorage.csproj" />
   </ItemGroup>
 
 </Project>

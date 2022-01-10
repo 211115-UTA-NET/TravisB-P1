@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TravisB_P1.Logic;
 
 namespace TravisB_P1API.API.Dtos
 {

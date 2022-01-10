@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using Microsoft.Extensions.Logging;
+using System.Data.SqlClient;
 using TravisB_P1.Logic;
 
 namespace TravisB_P1.DataStorage

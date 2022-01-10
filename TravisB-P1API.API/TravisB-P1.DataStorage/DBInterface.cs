@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TravisB_P1.Logic;
 using TravisB_P1API.Logic;
 
 namespace TravisB_P1API.DataStorage
