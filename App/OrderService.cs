@@ -17,7 +17,7 @@ namespace TravisB_P1.App
             _httpClient.BaseAddress = serverUri;
         }
 
-        public async Task<List<Inventory>> GetInventoryAsync(Locations location)
+        public async void GetInventoryAsync(Locations location)
         {
             Dictionary<string, string?> query = new() { ["storeinventory"] = location.ToString() };
             string requestUri = QueryHelpers.AddQueryString("/api/inventory", query);
@@ -47,7 +47,42 @@ namespace TravisB_P1.App
             {
                 throw new UnexpectedServerBehaviorException();
             }
-            return inventory;
+            
+            foreach(Inventory inventoryItem in inventory)
+            {
+                Console.WriteLine($"{inventoryItem.item.ToString()}\t{inventoryItem.itemDescription.ToString()}\t{inventoryItem.itemPrice.ToString()}\t{inventoryItem.quantityAvailable}");
+            }
+        }
+
+        public static async Task<int> GetStoreAmountByItem(string itemName, Locations location)
+        {
+            Dictionary<string, string?> query = new() { ["storeinventory"] = location.ToString() };
+            string requestUri = QueryHelpers.AddQueryString("/api/inventory", query);
+
+            HttpRequestMessage request = new(HttpMethod.Get, requestUri);
+            request.Headers.Accept.Add(new(MediaTypeNames.Application.Json));
+
+            HttpResponseMessage response;
+            try
+            {
+                response = await _httpClient.SendAsync(request);
+            }
+            catch (HttpRequestException ex)
+            {
+                throw new UnexpectedServerBehaviorException("network error", ex);
+            }
+
+            response.EnsureSuccessStatusCode();
+
+            if (response.Content.Headers.ContentType?.MediaType != MediaTypeNames.Application.Json)
+            {
+                throw new UnexpectedServerBehaviorException();
+            }
+
+            int totalAvailable = await response.Content.ReadFromJsonAsync<int>();
+
+            return totalAvailable;
+
         }
         public async void FinalizeOrderAsync(Order order, Customer customer)
         {

@@ -9,7 +9,7 @@ namespace TravisB_P1.App
 {
     public interface IOrder
     {
-        bool AddToCart();
+        void AddToCartAsync(Locations location);
         float Total(List<Product> cart);
     }
 }

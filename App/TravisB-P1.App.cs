@@ -36,68 +36,38 @@ namespace TravisB_P1.App
             {
                 case "order":
 
-                    Locations locationChoice = new();
+                    Locations locationChoice = Order.GetLocation();
+                    // getting menu (with total available) goes here
+                    IOrderService orderService1 = new OrderService(server);
+                    orderService1.GetInventoryAsync(locationChoice);
 
-                    bool gotLocation = false;
 
-                    while (gotLocation != true)
+                    List<Product> cart = new();
+
+                    Order thisOrder = new(cart, locationChoice);
+                    thisOrder.AddToCartAsync(locationChoice);
+
+
+                    //getting Customer name
+                    string name = "";
+                    bool gotName = false;
+                    do
                     {
-                        Console.WriteLine("What location would you like to pick up at?");
-                        string location = Console.ReadLine()!;
-                        if (location == null)
+                        if (name == "" || name == null)
                         {
-                            Console.WriteLine("Please enter a location");
-                        }
-                        else if (location == "Hopkins" || location == "Robbinsdale" || location == "Plymouth" || location == "Minneapolis")
-                        {
-                            locationChoice = (Locations)Enum.Parse(typeof(Locations), location);
-                            gotLocation = true;
+                            Console.WriteLine("Please enter your name for our records");
+                            name = Console.ReadLine()!;
                         }
                         else
                         {
-                            Console.WriteLine("Sorry, we don't have a shop there. Eligible locations are Minneapolis, Robbinsdale, Hopkins, and Plymouth");
+                            gotName = true;
                         }
-                    }
+                    } while (gotName != true);
 
-                    // getting menu (with total available) goes here
-                    IOrderService orderService1 = new OrderService(server);
-                    List<Inventory> inventory = await orderService1.GetInventoryAsync(locationChoice);
+                    IOrderService orderService = new OrderService(server);
 
-                    foreach(Inventory inventoryItem in inventory)
-                    {
-                        Console.WriteLine(inventoryItem);
-                    }
-
-
-                    //bool done = false;
-                    //List<Product> cart = new();
-
-                    //Order thisOrder = new(cart, locationChoice);
-                    //while (done != true)
-                    //{
-                    //    done = thisOrder.AddToCart();
-                    //}
-
-                    ////getting Customer name
-                    //string name = "";
-                    //bool gotName = false;
-                    //do
-                    //{
-                    //    if (name == "" || name == null)
-                    //    {
-                    //        Console.WriteLine("Please enter your name for our records");
-                    //        name = Console.ReadLine()!;
-                    //    }
-                    //    else
-                    //    {
-                    //        gotName = true;
-                    //    }
-                    //} while (gotName != true);
-
-                    //IOrderService orderService = new OrderService(server);
-
-                    //Customer thisCustomer = new();
-                    //thisCustomer._Name = name;
+                    Customer thisCustomer = new();
+                    thisCustomer._Name = name;
                     break;
 
                 case "view history":
