@@ -9,9 +9,9 @@ namespace TravisB_P0.Dtos
 {
     public class Inventory
     {
-        public Items item { get; set; }
-        public string itemDescription { get; set; }
-        public string itemPrice { get; set; }
-        public int quantityAvailable { get; set; }
+        public Items Item { get; set; }
+        public string? ItemDescription { get; set; }
+        public string? ItemPrice { get; set; }
+        public int QuantityAvailable { get; set; }
     }
 }

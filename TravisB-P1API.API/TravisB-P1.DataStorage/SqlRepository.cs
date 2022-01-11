@@ -7,12 +7,10 @@ namespace TravisB_P1.DataStorage
     public class SqlRepository : IRepository
     {
         private readonly string _connectionString;
-        private readonly ILogger<SqlRepository> _logger;
 
-        public SqlRepository(string connectionString, ILogger<SqlRepository> logger)
+        public SqlRepository(string connectionString)
         {
             _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
-            _logger = logger;
         }
 
         public async Task<IEnumerable<Inventory>> GetStoreInventoryAsync(Locations storeChoice)
@@ -44,8 +42,6 @@ namespace TravisB_P1.DataStorage
             }
 
             await connection.CloseAsync();
-
-            _logger.LogInformation("Executed select statement for inventory of store {store}", storeChoice);
 
             return inventory;
         }

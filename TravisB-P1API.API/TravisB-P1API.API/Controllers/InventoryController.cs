@@ -13,16 +13,14 @@ namespace TravisB_P1API.API.Controllers
     [ApiController]
     public class InventoryController : ControllerBase
     {
-        private readonly IRepository _repository;
-        private readonly ILogger<InventoryController> _logger;
+        private readonly SqlRepository _repository;
 
-        public InventoryController(IRepository repository, ILogger<InventoryController> logger)
+        public InventoryController(SqlRepository repository)
         {
             _repository = repository;
-            _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet("/inventory")]
         public async Task<ActionResult<IEnumerable<Inventory>>> GetStoreInventory([FromQuery, Required] Locations location)
         {
             IEnumerable<Inventory> inventory;
@@ -32,7 +30,7 @@ namespace TravisB_P1API.API.Controllers
             }
             catch (SqlException ex)
             {
-                _logger.LogError(ex, "Sql error while getting store inventory", location);
+                Console.WriteLine("In the catch block, 500 incoming");
                 return StatusCode(500);
             }
             return inventory.ToList();

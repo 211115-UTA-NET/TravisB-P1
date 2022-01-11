@@ -29,7 +29,7 @@ namespace TravisB_P1.App
             }
 
 
-            Uri server = new("https://localhost:7281");
+            Uri server = new("https://localhost:7202");
 
 
             switch (entry)
@@ -64,10 +64,8 @@ namespace TravisB_P1.App
                         }
                     } while (gotName != true);
 
-                    IOrderService orderService = new OrderService(server);
-
                     Customer thisCustomer = new();
-                    thisCustomer._Name = name;
+                    thisCustomer.Name = name;
                     break;
 
                 case "view history":

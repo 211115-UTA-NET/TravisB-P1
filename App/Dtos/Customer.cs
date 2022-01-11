@@ -8,6 +8,6 @@ namespace TravisB_P1.App.Dtos
 {
     public class Customer
     {
-        public string _Name { get; set; }
+        public string? Name { get; set; }
     }
 }

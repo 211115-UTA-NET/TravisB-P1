@@ -55,7 +55,7 @@ namespace TravisB_P1.App
 
                 if (selection == "done")
                 {
-                    break;
+                    return;
                 }
                 else if (selection == "Cheese" || selection == "Pepperoni" || selection == "Hawaiian" || selection == "Alfredo" || selection == "Deluxe")
                 {

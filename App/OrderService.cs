@@ -19,7 +19,7 @@ namespace TravisB_P1.App
 
         public async void GetInventoryAsync(Locations location)
         {
-            Dictionary<string, string?> query = new() { ["storeinventory"] = location.ToString() };
+            Dictionary<string, string?> query = new() { ["location"] = location.ToString() };
             string requestUri = QueryHelpers.AddQueryString("/api/inventory", query);
 
             HttpRequestMessage request = new(HttpMethod.Get, requestUri);
