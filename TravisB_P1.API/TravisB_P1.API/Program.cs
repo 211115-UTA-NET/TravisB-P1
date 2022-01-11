@@ -1,11 +1,9 @@
 using TravisB_P1.DataStorage;
 
-
-
+string connectionString = await File.ReadAllTextAsync("C:/Users/Owner/Revature/connectionString.txt");
 
 var builder = WebApplication.CreateBuilder(args);
 
-string connectionString = builder.Configuration.GetConnectionString("databaseConnection");
 // Add services to the container.
 
 builder.Services.AddControllers();
